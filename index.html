@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>អ្នកគ្រូ ហង់ ស៊ីថា (Ms. Hang Sitha) — គ្រូបង្រៀនកម្រិតបឋមសិក្សា</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #14532d;
+      --primary-light: #166534;
+      --accent: #0f766e;
+      --soft-green: #f0fdf4;
+      --soft-border: #bbf7d0;
+      --ink: #1e293b;
+      --muted: #64748b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Kantumruy Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .btn-pdf {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 7px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn-pdf:hover {
+      background: var(--primary-light);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #0d3b20 100%);
+      color: #ffffff;
+      padding: 54px 20px;
+    }
+
+    .hero-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .avatar-frame {
+      width: 185px;
+      height: 220px;
+      border-radius: 14px;
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 12px;
+      margin: 0 auto;
+    }
+
+    .avatar-frame strong {
+      font-size: 15px;
+      color: #dcfce7;
+    }
+
+    .avatar-frame span {
+      font-size: 12px;
+      color: #bbf7d0;
+      margin-top: 4px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: #dcfce7;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .hero .sub-en {
+      font-size: 16px;
+      color: #86efac;
+      font-weight: 600;
+      margin-top: 3px;
+    }
+
+    .hero p {
+      margin-top: 14px;
+      font-size: 15px;
+      color: #f1f5f9;
+      max-width: 720px;
+    }
+
+    .hero-actions {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-light {
+      background: #ffffff;
+      color: var(--primary);
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* Main Sections */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .section-header {
+      margin-bottom: 18px;
+    }
+
+    .section-header h2 {
+      font-size: 22px;
+      color: var(--primary);
+      border-left: 4px solid var(--primary);
+      padding-left: 12px;
+    }
+
+    .section-header p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 4px;
+      padding-left: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+    }
+
+    .card h3 {
+      font-size: 16px;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .meta-tag {
+      display: inline-block;
+      background: var(--soft-green);
+      color: var(--primary);
+      border: 1px solid var(--soft-border);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .info-table td {
+      padding: 8px 6px;
+      border-bottom: 1px solid #f1f5f9;
+      vertical-align: top;
+    }
+
+    .info-table td:first-child {
+      width: 170px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .list-clean {
+      margin-left: 18px;
+      font-size: 14px;
+    }
+
+    .list-clean li {
+      margin-bottom: 6px;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 13.5px;
+    }
+
+    @media print {
+      .navbar, .hero-actions, .btn-pdf {
+        display: none !important;
+      }
+      body {
+        background: #ffffff;
+      }
+      .hero {
+        padding: 28px 16px;
+      }
+      .card {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero p {
+        margin: 12px auto 0 auto;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#top" class="brand">អ្នកគ្រូ ហង់ ស៊ីថា</a>
+      <div class="nav-links">
+        <a href="#about">ព័ត៌មានផ្ទាល់ខ្លួន</a>
+        <a href="#experience">បទពិសោធន៍បង្រៀន</a>
+        <a href="#education">ការសិក្សា និងវិញ្ញាបនបត្រ</a>
+        <a href="#references">អ្នកយោង និងទំនាក់ទំនង</a>
+        <button class="btn-pdf" type="button" onclick="window.print()">🖨️ Print / PDF</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <div class="avatar-frame">
+        <strong>រូបថតផ្លូវការ</strong>
+        <span>អ្នកគ្រូ ហង់ ស៊ីថា</span>
+        <span>(Ms. Hang Sitha)</span>
+      </div>
+      <div>
+        <div class="badge">គ្រូបង្រៀនកម្រិតបឋមសិក្សា • Primary School Teacher</div>
+        <h1>អ្នកគ្រូ ហង់ ស៊ីថា</h1>
+        <div class="sub-en">MS. HANG SITHA</div>
+        <p>
+          គ្រូបង្រៀនកម្រិតបឋមសិក្សាដែលមានបទពិសោធន៍បង្រៀនទាំងនៅសាលារដ្ឋ និងសាលាឯកជន ចូលចិត្តអានសៀវភៅ ស្រាវជ្រាវវិធីសាស្ត្របង្រៀន ធ្វើការងារជាក្រុម និងមានចិត្តស្រឡាញ់ការបង្រៀនសិស្សានុសិស្ស។
+        </p>
+        <div class="hero-actions">
+          <a href="#experience" class="btn-light">មើលបទពិសោធន៍បង្រៀន</a>
+          <a href="#references" class="btn-ghost">ព័ត៌មានទំនាក់ទំនង</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- About & Family -->
+    <section id="about">
+      <div class="section-header">
+        <h2>ព័ត៌មានផ្ទាល់ខ្លួន និងគ្រួសារ</h2>
+        <p>ព័ត៌មានអត្តសញ្ញាណ ទីលំនៅ និងស្ថានភាពគ្រួសារ</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>ព័ត៌មានផ្ទាល់ខ្លួន</h3>
+          <table class="info-table">
+            <tr>
+              <td>ឈ្មោះពេញ</td>
+              <td>ហង់ ស៊ីថា (HANG SITHA)</td>
+            </tr>
+            <tr>
+              <td>ភេទ / ថ្ងៃខែឆ្នាំកំណើត</td>
+              <td>ស្រី / 01.01.1975</td>
+            </tr>
+            <tr>
+              <td>ទីកន្លែងកំណើត</td>
+              <td>ភូមិស្នួល ឃុំធាយ ស្រុកបាភ្នំ ខេត្តព្រៃវែង</td>
+            </tr>
+            <tr>
+              <td>ទីលំនៅបច្ចុប្បន្ន</td>
+              <td>ផ្ទះលេខ 79ស20 ភូមិ 7 សង្កាត់ទន្លេបាសាក់ ខណ្ឌចំការមន រាជធានីភ្នំពេញ</td>
+            </tr>
+            <tr>
+              <td>លេខទូរស័ព្ទ</td>
+              <td>097​ 21 99​ 373</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>ស្ថានភាពគ្រួសារ និងចំណាប់អារម្មណ៍</h3>
+          <table class="info-table">
+            <tr>
+              <td>ស្ថានភាពគ្រួសារ</td>
+              <td>រៀបការរួច</td>
+            </tr>
+            <tr>
+              <td>ប្តីឈ្មោះ / របរ</td>
+              <td>ហួ កាំង (កើត 05.06.1970) — គ្រូបង្រៀន</td>
+            </tr>
+            <tr>
+              <td>កូនទី ១</td>
+              <td>ហួកាំង ថារ៉ា (កើត 05.11.1998, ភេទ៖ ប្រុស)</td>
+            </tr>
+            <tr>
+              <td>កូនទី ២</td>
+              <td>ហួកាំង ថារ័ត្ន (កើត 14.04.2001, ធ្វើការក្រុមហ៊ុន)</td>
+            </tr>
+            <tr>
+              <td>ចំណាប់អារម្មណ៍</td>
+              <td>ចូលចិត្តអានសៀវភៅ ស្រាវជ្រាវវិធីសាស្ត្របង្រៀន ធ្វើការជាក្រុម និងចូលចិត្តបង្រៀន</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Teaching Experience -->
+    <section id="experience">
+      <div class="section-header">
+        <h2>បទពិសោធន៍ការងារ និងបង្រៀន</h2>
+        <p>ប្រវត្តិបង្រៀនកម្រិតបឋមសិក្សានៅតាមគ្រឹះស្ថានអប់រំ</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="meta-tag">២០១៧ – ២០២៤</div>
+          <h3>គ្រូបង្រៀនបឋមសិក្សា — សាលាឯកជន សុខា បញ្ញា</h3>
+          <ul class="list-clean">
+            <li>តួនាទី៖ គ្រូបង្រៀនបឋមសិក្សា</li>
+            <li>ប្រាក់ខែ/ប្រាក់រង្វាន់៖ 400$</li>
+            <li>បង្រៀន និងណែនាំសិស្សកម្រិតបឋមសិក្សាប្រកបដោយការយកចិត្តទុកដាក់។</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="meta-tag">១៩៩៣ – ២០១៣</div>
+          <h3>គ្រូបង្រៀនបឋមសិក្សា — សាលារដ្ឋ</h3>
+          <ul class="list-clean">
+            <li>តួនាទី៖ គ្រូបង្រៀនបឋមសិក្សា</li>
+            <li>ស្ថាប័ន៖ សាលារដ្ឋ</li>
+            <li>បង្រៀនសិស្សកម្រិតបឋមសិក្សា និងចូលរួមកិច្ចការសិក្សាធិការក្នុងសាលា។</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Certificates -->
+    <section id="education">
+      <div class="section-header">
+        <h2>ប្រវត្តិការសិក្សា វគ្គបណ្តុះបណ្តាល និងវិញ្ញាបនបត្រ</h2>
+        <p>សញ្ញាបត្រ វិញ្ញាបនបត្រគរុកោសល្យ និងវគ្គបណ្តុះបណ្តាលផ្សេងៗ</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>កម្រិតវប្បធម៌ទូទៅ</h3>
+          <ul class="list-clean">
+            <li><strong>មធ្យមសិក្សាទុតិយភូមិ (២០០៦ – ២០០៨)៖</strong> រៀនបំពេញវិជ្ជា នៅសាលាមធ្យម (សម័យប្រឡង ០៤ សីហា ២០០៨ មណ្ឌល ទ.ហ៊ុនសែន ប៊ុនរ៉ានី វត្តភ្នំ និទ្ទេស E)។</li>
+            <li><strong>មធ្យមសិក្សាបឋមភូមិ (១៩៩៤ – ១៩៩៨)៖</strong> សាលា វត្តកោះ (ក្រុងភ្នំពេញ)។</li>
+            <li><strong>បឋមសិក្សា (១៩៨២ – ១៩៨៩)៖</strong> សាលា វត្តព្រះស្រីតារពេជ្រ ខេត្តព្រៃវែង។</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>គរុកោសល្យ និងវគ្គបណ្តុះបណ្តាល</h3>
+          <ul class="list-clean">
+            <li><strong>វិញ្ញាបនបត្រគ្រូបង្រៀនកម្រិតបឋមសិក្សា (១២+២)៖</strong> នាយកដ្ឋានសាលាគរុកោសល្យ និងវិក្រឹតការរាជធានី (លិខិតបញ្ជាក់ការសិក្សា ថ្ងៃទី ១២ សីហា ២០០១)។</li>
+            <li><strong>វិញ្ញាបនបត្របញ្ចប់វគ្គគរុកោសល្យ (២៩៣៤៧០)៖</strong> ចុះថ្ងៃទី ០៤ ខែ ០៧ ឆ្នាំ ២០០១។</li>
+            <li><strong>វិញ្ញាបនបត្របណ្តុះបណ្តាលគរុកោសល្យ (១៩៩១ – ១៩៩៣)៖</strong> សាលាគរុកោសល្យ និងវិក្រឹតការ រាជធានីភ្នំពេញ។</li>
+            <li><strong>វិទ្យាស្ថានកម្ពុជាដើម្បីសិទ្ធិមនុស្ស (១៩៩៦)៖</strong> វគ្គបណ្តុះបណ្តាលវិធីសាស្ត្របង្រៀនសិទ្ធិមនុស្សសម្រាប់សាលាបឋមសិក្សា (29 July – 03 August 1996) និងវិញ្ញាបនបត្រសិក្សា។</li>
+            <li><strong>ឯកសារពលរដ្ឋកម្ម (២០០១)៖</strong> វិញ្ញាបនបត្របញ្ចប់ការសិក្សា។</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- References & Contact -->
+    <section id="references">
+      <div class="section-header">
+        <h2>អ្នកផ្តល់ព័ត៌មានបន្ថែម និងទំនាក់ទំនង</h2>
+        <p>អ្នកយោងដែលអាចបញ្ជាក់ពីសមត្ថភាព និងបទពិសោធន៍</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>អ្នកស្រី ហុក លក្ខណា</h3>
+          <p style="font-size: 13.5px; color: var(--muted);">មហាវិទ្យាល័យពុទ្ធិកសាស្ត្រវិទ្យា និងវិទ្យាសាស្ត្រ</p>
+          <p style="font-size: 13.5px; margin-top: 6px;"><strong>មុខរបរ៖</strong> សាស្ត្រាចារ្យពេញម៉ោង</p>
+          <p style="font-size: 13.5px; margin-top: 4px;"><strong>ទូរស័ព្ទ៖</strong> 012 904 371</p>
+        </div>
+
+        <div class="card">
+          <h3>អ្នកស្រី យ៉ន ដានីត</h3>
+          <p style="font-size: 13.5px; color: var(--muted);">សាលាឯកជន សុខា បញ្ញា</p>
+          <p style="font-size: 13.5px; margin-top: 6px;"><strong>មុខរបរ៖</strong> គ្រូបង្រៀនបឋមសិក្សា</p>
+          <p style="font-size: 13.5px; margin-top: 4px;"><strong>ទូរស័ព្ទ៖</strong> 092 267 10 24</p>
+        </div>
+
+        <div class="card">
+          <h3>ទំនាក់ទំនងផ្ទាល់</h3>
+          <p style="font-size: 13.5px; margin-top: 4px;"><strong>ឈ្មោះ៖</strong> ហង់ ស៊ីថា (Hang Sitha)</p>
+          <p style="font-size: 13.5px; margin-top: 4px;"><strong>ទូរស័ព្ទ៖</strong> 097 21​ 99​​​ 373 </p>
+          <p style="font-size: 13.5px; margin-top: 4px;"><strong>ទីលំនៅ៖</strong> ផ្ទះលេខ 79ស20 ភូមិ 7 សង្កាត់ទន្លេបាសាក់ ខណ្ឌចំការមន រាជធានីភ្នំពេញ</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    គេហទំព័រប្រវត្តិរូបរបស់ <strong>អ្នកគ្រូ ហង់ ស៊ីថា (Ms. Hang Sitha)</strong> — គ្រូបង្រៀនកម្រិតបឋមសិក្សា
+  </footer>
+
+</body>
+</html>
