@@ -21,7 +21,7 @@
       --border: #e2e8f0;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -86,6 +86,23 @@
       color: var(--primary);
     }
 
+    .btn-lang {
+      background: var(--soft-green);
+      color: var(--primary);
+      border: 1px solid var(--soft-border);
+      padding: 7px 12px;
+      border-radius: 7px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn-lang:hover {
+      background: #dcfce7;
+    }
+
     .btn-pdf {
       background: var(--primary);
       color: #ffffff;
@@ -119,7 +136,7 @@
       align-items: center;
     }
 
-    .avatar-frame {
+    .photo-box {
       width: 185px;
       height: 220px;
       border-radius: 14px;
@@ -130,19 +147,9 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 12px;
+      padding: 6px;
       margin: 0 auto;
-    }
-
-    .avatar-frame strong {
-      font-size: 15px;
-      color: #dcfce7;
-    }
-
-    .avatar-frame span {
-      font-size: 12px;
-      color: #bbf7d0;
-      margin-top: 4px;
+      overflow: hidden;
     }
 
     .badge {
@@ -307,7 +314,7 @@
     }
 
     @media print {
-      .navbar, .hero-actions, .btn-pdf {
+      .navbar, .hero-actions, .btn-pdf, .btn-lang {
         display: none !important;
       }
       body {
@@ -345,13 +352,14 @@
   <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="nav-inner">
-      <a href="#top" class="brand">អ្នកគ្រូ ហង់ ស៊ីថា</a>
+      <a href="#top" class="brand" data-i18n="brand">អ្នកគ្រូ ហង់ ស៊ីថា</a>
       <div class="nav-links">
-        <a href="#about">ព័ត៌មានផ្ទាល់ខ្លួន</a>
-        <a href="#experience">បទពិសោធន៍បង្រៀន</a>
-        <a href="#education">ការសិក្សា និងវិញ្ញាបនបត្រ</a>
-        <a href="#references">អ្នកយោង និងទំនាក់ទំនង</a>
-        <button class="btn-pdf" type="button" onclick="window.print()">🖨️ Print / PDF</button>
+        <a href="#about" data-i18n="navAbout">ព័ត៌មានផ្ទាល់ខ្លួន</a>
+        <a href="#experience" data-i18n="navExperience">បទពិសោធន៍បង្រៀន</a>
+        <a href="#education" data-i18n="navEducation">ការសិក្សា និងវិញ្ញាបនបត្រ</a>
+        <a href="#references" data-i18n="navReferences">អ្នកយោង និងទំនាក់ទំនង</a>
+        <button class="btn-lang" type="button" id="langToggleBtn" onclick="toggleLanguage()">🌐 English</button>
+        <button class="btn-pdf" type="button" id="pdfToggleBtn" onclick="window.print()">🖨️ Print / PDF</button>
       </div>
     </div>
   </nav>
@@ -363,15 +371,15 @@
         <img src="hangsitha.jpg" alt="អ្នកគ្រូ ហង់ ស៊ីថា (Ms. Hang Sitha)" style="width: 100%; height: 100%; object-fit: cover; border-radius: 7px;">
       </div>
       <div>
-        <div class="badge">គ្រូបង្រៀនកម្រិតបឋមសិក្សា • Primary School Teacher</div>
-        <h1>អ្នកគ្រូ ហង់ ស៊ីថា</h1>
-        <div class="sub-en">MS. HANG SITHA</div>
-        <p>
+        <div class="badge" data-i18n="heroBadge">គ្រូបង្រៀនកម្រិតបឋមសិក្សា • Primary School Teacher</div>
+        <h1 data-i18n="heroTitle">អ្នកគ្រូ ហង់ ស៊ីថា</h1>
+        <div class="sub-en" data-i18n="heroSubEn">MS. HANG SITHA</div>
+        <p data-i18n="heroDesc">
           គ្រូបង្រៀនកម្រិតបឋមសិក្សាដែលមានបទពិសោធន៍បង្រៀនទាំងនៅសាលារដ្ឋ និងសាលាឯកជន ចូលចិត្តអានសៀវភៅ ស្រាវជ្រាវវិធីសាស្ត្របង្រៀន ធ្វើការងារជាក្រុម និងមានចិត្តស្រឡាញ់ការបង្រៀនសិស្សានុសិស្ស។
         </p>
         <div class="hero-actions">
-          <a href="#experience" class="btn-light">មើលបទពិសោធន៍បង្រៀន</a>
-          <a href="#references" class="btn-ghost">ព័ត៌មានទំនាក់ទំនង</a>
+          <a href="#experience" class="btn-light" data-i18n="heroBtnExp">មើលបទពិសោធន៍បង្រៀន</a>
+          <a href="#references" class="btn-ghost" data-i18n="heroBtnRef">ព័ត៌មានទំនាក់ទំនង</a>
         </div>
       </div>
     </div>
@@ -383,58 +391,58 @@
     <!-- About & Family -->
     <section id="about">
       <div class="section-header">
-        <h2>ព័ត៌មានផ្ទាល់ខ្លួន និងគ្រួសារ</h2>
-        <p>ព័ត៌មានអត្តសញ្ញាណ ទីលំនៅ និងស្ថានភាពគ្រួសារ</p>
+        <h2 data-i18n="aboutTitle">ព័ត៌មានផ្ទាល់ខ្លួន និងគ្រួសារ</h2>
+        <p data-i18n="aboutSub">ព័ត៌មានអត្តសញ្ញាណ ទីលំនៅ និងស្ថានភាពគ្រួសារ</p>
       </div>
       <div class="grid-2">
         <div class="card">
-          <h3>ព័ត៌មានផ្ទាល់ខ្លួន</h3>
+          <h3 data-i18n="personalCardTitle">ព័ត៌មានផ្ទាល់ខ្លួន</h3>
           <table class="info-table">
             <tr>
-              <td>ឈ្មោះពេញ</td>
-              <td>ហង់ ស៊ីថា (HANG SITHA)</td>
+              <td data-i18n="lblFullName">ឈ្មោះពេញ</td>
+              <td data-i18n="valFullName">ហង់ ស៊ីថា (HANG SITHA)</td>
             </tr>
             <tr>
-              <td>ភេទ / ថ្ងៃខែឆ្នាំកំណើត</td>
-              <td>ស្រី / 01.01.1975</td>
+              <td data-i18n="lblGenderDob">ភេទ / ថ្ងៃខែឆ្នាំកំណើត</td>
+              <td data-i18n="valGenderDob">ស្រី / 01.01.1975</td>
             </tr>
             <tr>
-              <td>ទីកន្លែងកំណើត</td>
-              <td>ភូមិស្នួល ឃុំធាយ ស្រុកបាភ្នំ ខេត្តព្រៃវែង</td>
+              <td data-i18n="lblPob">ទីកន្លែងកំណើត</td>
+              <td data-i18n="valPob">ភូមិស្នួល ឃុំធាយ ស្រុកបាភ្នំ ខេត្តព្រៃវែង</td>
             </tr>
             <tr>
-              <td>ទីលំនៅបច្ចុប្បន្ន</td>
-              <td>ផ្ទះលេខ 79ស20 ភូមិ 7 សង្កាត់ទន្លេបាសាក់ ខណ្ឌចំការមន រាជធានីភ្នំពេញ</td>
+              <td data-i18n="lblAddress">ទីលំនៅបច្ចុប្បន្ន</td>
+              <td data-i18n="valAddress">ផ្ទះលេខ 79ស20 ភូមិ 7 សង្កាត់ទន្លេបាសាក់ ខណ្ឌចំការមន រាជធានីភ្នំពេញ</td>
             </tr>
             <tr>
-              <td>លេខទូរស័ព្ទ</td>
-              <td>097​ 21 99​ 373</td>
+              <td data-i18n="lblPhone">លេខទូរស័ព្ទ</td>
+              <td>097 21 99 373</td>
             </tr>
           </table>
         </div>
 
         <div class="card">
-          <h3>ស្ថានភាពគ្រួសារ និងចំណាប់អារម្មណ៍</h3>
+          <h3 data-i18n="familyCardTitle">ស្ថានភាពគ្រួសារ និងចំណាប់អារម្មណ៍</h3>
           <table class="info-table">
             <tr>
-              <td>ស្ថានភាពគ្រួសារ</td>
-              <td>រៀបការរួច</td>
+              <td data-i18n="lblMarital">ស្ថានភាពគ្រួសារ</td>
+              <td data-i18n="valMarital">រៀបការរួច</td>
             </tr>
             <tr>
-              <td>ប្តីឈ្មោះ / របរ</td>
-              <td>ហួ កាំង (កើត 05.06.1970) — គ្រូបង្រៀន</td>
+              <td data-i18n="lblSpouse">ប្តីឈ្មោះ / របរ</td>
+              <td data-i18n="valSpouse">ហួ កាំង (កើត 05.06.1970) — គ្រូបង្រៀន</td>
             </tr>
             <tr>
-              <td>កូនទី ១</td>
-              <td>ហួកាំង ថារ៉ា (កើត 05.11.1998, ភេទ៖ ប្រុស)</td>
+              <td data-i18n="lblChild1">កូនទី ១</td>
+              <td data-i18n="valChild1">ហួកាំង ថារ៉ា (កើត 05.11.1998, ភេទ៖ ប្រុស)</td>
             </tr>
             <tr>
-              <td>កូនទី ២</td>
-              <td>ហួកាំង ថារ័ត្ន (កើត 19.05.2001, ធ្វើការក្រុមហ៊ុន)</td>
+              <td data-i18n="lblChild2">កូនទី ២</td>
+              <td data-i18n="valChild2">ហួកាំង ថារ័ត្ន (កើត 19.05.2001, ធ្វើការក្រុមហ៊ុន)</td>
             </tr>
             <tr>
-              <td>ចំណាប់អារម្មណ៍</td>
-              <td>ចូលចិត្តអានសៀវភៅ ស្រាវជ្រាវវិធីសាស្ត្របង្រៀន ធ្វើការជាក្រុម និងចូលចិត្តបង្រៀន</td>
+              <td data-i18n="lblInterest">ចំណាប់អារម្មណ៍</td>
+              <td data-i18n="valInterest">ចូលចិត្តអានសៀវភៅ ស្រាវជ្រាវវិធីសាស្ត្របង្រៀន ធ្វើការជាក្រុម និងចូលចិត្តបង្រៀន</td>
             </tr>
           </table>
         </div>
@@ -444,27 +452,27 @@
     <!-- Teaching Experience -->
     <section id="experience">
       <div class="section-header">
-        <h2>បទពិសោធន៍ការងារ និងបង្រៀន</h2>
-        <p>ប្រវត្តិបង្រៀនកម្រិតបឋមសិក្សានៅតាមគ្រឹះស្ថានអប់រំ</p>
+        <h2 data-i18n="expTitle">បទពិសោធន៍ការងារ និងបង្រៀន</h2>
+        <p data-i18n="expSub">ប្រវត្តិបង្រៀនកម្រិតបឋមសិក្សានៅតាមគ្រឹះស្ថានអប់រំ</p>
       </div>
       <div class="grid-2">
         <div class="card">
-          <div class="meta-tag">២០១៧ – ២០២៤</div>
-          <h3>គ្រូបង្រៀនបឋមសិក្សា — សាលាឯកជន សុខា បញ្ញា</h3>
+          <div class="meta-tag" data-i18n="exp1Tag">២០១៧ – ២០២៤</div>
+          <h3 data-i18n="exp1Heading">គ្រូបង្រៀនបឋមសិក្សា — សាលាឯកជន សុខា បញ្ញា</h3>
           <ul class="list-clean">
-            <li>តួនាទី៖ គ្រូបង្រៀនបឋមសិក្សា</li>
-            <li>ប្រាក់ខែ/ប្រាក់រង្វាន់៖ 400$</li>
-            <li>បង្រៀន និងណែនាំសិស្សកម្រិតបឋមសិក្សាប្រកបដោយការយកចិត្តទុកដាក់។</li>
+            <li data-i18n="exp1Role">តួនាទី៖ គ្រូបង្រៀនបឋមសិក្សា</li>
+            <li data-i18n="exp1Salary">ប្រាក់ខែ/ប្រាក់រង្វាន់៖ 400$</li>
+            <li data-i18n="exp1Desc">បង្រៀន និងណែនាំសិស្សកម្រិតបឋមសិក្សាប្រកបដោយការយកចិត្តទុកដាក់។</li>
           </ul>
         </div>
 
         <div class="card">
-          <div class="meta-tag">១៩៩៣ – ២០១៣</div>
-          <h3>គ្រូបង្រៀនបឋមសិក្សា — សាលារដ្ឋ</h3>
+          <div class="meta-tag" data-i18n="exp2Tag">១៩៩៣ – ២០១៣</div>
+          <h3 data-i18n="exp2Heading">គ្រូបង្រៀនបឋមសិក្សា — សាលារដ្ឋ</h3>
           <ul class="list-clean">
-            <li>តួនាទី៖ គ្រូបង្រៀនបឋមសិក្សា</li>
-            <li>ស្ថាប័ន៖ សាលារដ្ឋ</li>
-            <li>បង្រៀនសិស្សកម្រិតបឋមសិក្សា និងចូលរួមកិច្ចការសិក្សាធិការក្នុងសាលា។</li>
+            <li data-i18n="exp2Role">តួនាទី៖ គ្រូបង្រៀនបឋមសិក្សា</li>
+            <li data-i18n="exp2Org">ស្ថាប័ន៖ សាលារដ្ឋ</li>
+            <li data-i18n="exp2Desc">បង្រៀនសិស្សកម្រិតបឋមសិក្សា និងចូលរួមកិច្ចការសិក្សាធិការក្នុងសាលា។</li>
           </ul>
         </div>
       </div>
@@ -473,27 +481,27 @@
     <!-- Education & Certificates -->
     <section id="education">
       <div class="section-header">
-        <h2>ប្រវត្តិការសិក្សា វគ្គបណ្តុះបណ្តាល និងវិញ្ញាបនបត្រ</h2>
-        <p>សញ្ញាបត្រ វិញ្ញាបនបត្រគរុកោសល្យ និងវគ្គបណ្តុះបណ្តាលផ្សេងៗ</p>
+        <h2 data-i18n="eduTitle">ប្រវត្តិការសិក្សា វគ្គបណ្តុះបណ្តាល និងវិញ្ញាបនបត្រ</h2>
+        <p data-i18n="eduSub">សញ្ញាបត្រ វិញ្ញាបនបត្រគរុកោសល្យ និងវគ្គបណ្តុះបណ្តាលផ្សេងៗ</p>
       </div>
       <div class="grid-2">
         <div class="card">
-          <h3>កម្រិតវប្បធម៌ទូទៅ</h3>
+          <h3 data-i18n="genEduHeading">កម្រិតវប្បធម៌ទូទៅ</h3>
           <ul class="list-clean">
-            <li><strong>មធ្យមសិក្សាទុតិយភូមិ (២០០៦ – ២០០៨)៖</strong> រៀនបំពេញវិជ្ជា នៅសាលាមធ្យម (សម័យប្រឡង ០៤ សីហា ២០០៨ មណ្ឌល ទ.ហ៊ុនសែន ប៊ុនរ៉ានី វត្តភ្នំ និទ្ទេស E)។</li>
-            <li><strong>មធ្យមសិក្សាបឋមភូមិ (១៩៩៤ – ១៩៩៨)៖</strong> សាលា វត្តកោះ (ក្រុងភ្នំពេញ)។</li>
-            <li><strong>បឋមសិក្សា (១៩៨២ – ១៩៨៩)៖</strong> សាលា វត្តព្រះស្រីតារពេជ្រ ខេត្តព្រៃវែង។</li>
+            <li data-i18n="genEdu1"><strong>មធ្យមសិក្សាទុតិយភូមិ (២០០៦ – ២០០៨)៖</strong> រៀនបំពេញវិជ្ជា នៅសាលាមធ្យម (សម័យប្រឡង ០៤ សីហា ២០០៨ មណ្ឌល ទ.ហ៊ុនសែន ប៊ុនរ៉ានី វត្តភ្នំ និទ្ទេស E)។</li>
+            <li data-i18n="genEdu2"><strong>មធ្យមសិក្សាបឋមភូមិ (១៩៩៤ – ១៩៩៨)៖</strong> សាលា វត្តកោះ (ក្រុងភ្នំពេញ)។</li>
+            <li data-i18n="genEdu3"><strong>បឋមសិក្សា (១៩៨២ – ១៩៨៩)៖</strong> សាលា វត្តព្រះស្រីតារពេជ្រ ខេត្តព្រៃវែង។</li>
           </ul>
         </div>
 
         <div class="card">
-          <h3>គរុកោសល្យ និងវគ្គបណ្តុះបណ្តាល</h3>
+          <h3 data-i18n="pedEduHeading">គរុកោសល្យ និងវគ្គបណ្តុះបណ្តាល</h3>
           <ul class="list-clean">
-            <li><strong>វិញ្ញាបនបត្រគ្រូបង្រៀនកម្រិតបឋមសិក្សា (១១+២)៖</strong> នាយកដ្ឋានសាលាគរុកោសល្យ និងវិក្រឹតការរាជធានី (លិខិតបញ្ជាក់ការសិក្សា ថ្ងៃទី ១២ សីហា ២០០១)។</li>
-            <li><strong>វិញ្ញាបនបត្របញ្ចប់វគ្គគរុកោសល្យ (២៩៣៤៧០)៖</strong> ចុះថ្ងៃទី ០៤ ខែ ០៧ ឆ្នាំ ២០០១។</li>
-            <li><strong>វិញ្ញាបនបត្របណ្តុះបណ្តាលគរុកោសល្យ (១៩៩១ – ១៩៩៣)៖</strong> សាលាគរុកោសល្យ និងវិក្រឹតការ រាជធានីភ្នំពេញ។</li>
-            <li><strong>វិទ្យាស្ថានកម្ពុជាដើម្បីសិទ្ធិមនុស្ស (១៩៩៦)៖</strong> វគ្គបណ្តុះបណ្តាលវិធីសាស្ត្របង្រៀនសិទ្ធិមនុស្សសម្រាប់សាលាបឋមសិក្សា (29 July – 03 August 1996) និងវិញ្ញាបនបត្រសិក្សា។</li>
-            <li><strong>ឯកសារពលរដ្ឋកម្ម (២០០១)៖</strong> វិញ្ញាបនបត្របញ្ចប់ការសិក្សា។</li>
+            <li data-i18n="pedEdu1"><strong>វិញ្ញាបនបត្រគ្រូបង្រៀនកម្រិតបឋមសិក្សា (១១+២)៖</strong> នាយកដ្ឋានសាលាគរុកោសល្យ និងវិក្រឹតការរាជធានី (លិខិតបញ្ជាក់ការសិក្សា ថ្ងៃទី ១២ សីហា ២០០១)។</li>
+            <li data-i18n="pedEdu2"><strong>វិញ្ញាបនបត្របញ្ចប់វគ្គគរុកោសល្យ (២៩៣៤៧០)៖</strong> ចុះថ្ងៃទី ០៤ ខែ ០៧ ឆ្នាំ ២០០១។</li>
+            <li data-i18n="pedEdu3"><strong>វិញ្ញាបនបត្របណ្តុះបណ្តាលគរុកោសល្យ (១៩៩១ – ១៩៩៣)៖</strong> សាលាគរុកោសល្យ និងវិក្រឹតការ រាជធានីភ្នំពេញ។</li>
+            <li data-i18n="pedEdu4"><strong>វិទ្យាស្ថានកម្ពុជាដើម្បីសិទ្ធិមនុស្ស (១៩៩៦)៖</strong> វគ្គបណ្តុះបណ្តាលវិធីសាស្ត្របង្រៀនសិទ្ធិមនុស្សសម្រាប់សាលាបឋមសិក្សា (29 July – 03 August 1996) និងវិញ្ញាបនបត្រសិក្សា។</li>
+            <li data-i18n="pedEdu5"><strong>ឯកសារពលរដ្ឋកម្ម (២០០១)៖</strong> វិញ្ញាបនបត្របញ្ចប់ការសិក្សា។</li>
           </ul>
         </div>
       </div>
@@ -502,38 +510,164 @@
     <!-- References & Contact -->
     <section id="references">
       <div class="section-header">
-        <h2>អ្នកផ្តល់ព័ត៌មានបន្ថែម និងទំនាក់ទំនង</h2>
-        <p>អ្នកយោងដែលអាចបញ្ជាក់ពីសមត្ថភាព និងបទពិសោធន៍</p>
+        <h2 data-i18n="refTitle">អ្នកផ្តល់ព័ត៌មានបន្ថែម និងទំនាក់ទំនង</h2>
+        <p data-i18n="refSub">អ្នកយោងដែលអាចបញ្ជាក់ពីសមត្ថភាព និងបទពិសោធន៍</p>
       </div>
       <div class="grid-3">
         <div class="card">
-          <h3>អ្នកស្រី ហុក លក្ខណា</h3>
-          <p style="font-size: 13.5px; color: var(--muted);">មហាវិទ្យាល័យពុទ្ធិកសាស្ត្រវិទ្យា និងវិទ្យាសាស្ត្រ</p>
-          <p style="font-size: 13.5px; margin-top: 6px;"><strong>មុខរបរ៖</strong> សាស្ត្រាចារ្យពេញម៉ោង</p>
-          <p style="font-size: 13.5px; margin-top: 4px;"><strong>ទូរស័ព្ទ៖</strong> 012 904 371</p>
+          <h3 data-i18n="ref1Name">អ្នកស្រី ហុក លក្ខណា</h3>
+          <p style="font-size: 13.5px; color: var(--muted);" data-i18n="ref1Org">មហាវិទ្យាល័យពុទ្ធិកសាស្ត្រវិទ្យា និងវិទ្យាសាស្ត្រ</p>
+          <p style="font-size: 13.5px; margin-top: 6px;" data-i18n="ref1Role"><strong>មុខរបរ៖</strong> សាស្ត្រាចារ្យពេញម៉ោង</p>
+          <p style="font-size: 13.5px; margin-top: 4px;" data-i18n="ref1Phone"><strong>ទូរស័ព្ទ៖</strong> 012 904 371</p>
         </div>
 
         <div class="card">
-          <h3>អ្នកស្រី យ៉ន ដានីត</h3>
-          <p style="font-size: 13.5px; color: var(--muted);">សាលាឯកជន សុខា បញ្ញា</p>
-          <p style="font-size: 13.5px; margin-top: 6px;"><strong>មុខរបរ៖</strong> គ្រូបង្រៀនបឋមសិក្សា</p>
-          <p style="font-size: 13.5px; margin-top: 4px;"><strong>ទូរស័ព្ទ៖</strong> 092 267 10 24</p>
+          <h3 data-i18n="ref2Name">អ្នកស្រី យ៉ន ដានីត</h3>
+          <p style="font-size: 13.5px; color: var(--muted);" data-i18n="ref2Org">សាលាឯកជន សុខា បញ្ញា</p>
+          <p style="font-size: 13.5px; margin-top: 6px;" data-i18n="ref2Role"><strong>មុខរបរ៖</strong> គ្រូបង្រៀនបឋមសិក្សា</p>
+          <p style="font-size: 13.5px; margin-top: 4px;" data-i18n="ref2Phone"><strong>ទូរស័ព្ទ៖</strong> 092 267 10 24</p>
         </div>
 
         <div class="card">
-          <h3>ទំនាក់ទំនងផ្ទាល់</h3>
-          <p style="font-size: 13.5px; margin-top: 4px;"><strong>ឈ្មោះ៖</strong> ហង់ ស៊ីថា (Hang Sitha)</p>
-          <p style="font-size: 13.5px; margin-top: 4px;"><strong>ទូរស័ព្ទ៖</strong> 097 21​ 99​​​ 373 </p>
-          <p style="font-size: 13.5px; margin-top: 4px;"><strong>ទីលំនៅ៖</strong> ផ្ទះលេខ 79ស20 ភូមិ 7 សង្កាត់ទន្លេបាសាក់ ខណ្ឌចំការមន រាជធានីភ្នំពេញ</p>
+          <h3 data-i18n="contactCardTitle">ទំនាក់ទំនងផ្ទាល់</h3>
+          <p style="font-size: 13.5px; margin-top: 4px;" data-i18n="contactName"><strong>ឈ្មោះ៖</strong> ហង់ ស៊ីថា (Hang Sitha)</p>
+          <p style="font-size: 13.5px; margin-top: 4px;" data-i18n="contactPhone"><strong>ទូរស័ព្ទ៖</strong> 097 21 99 373</p>
+          <p style="font-size: 13.5px; margin-top: 4px;" data-i18n="contactAddr"><strong>ទីលំនៅ៖</strong> ផ្ទះលេខ 79ស20 ភូមិ 7 សង្កាត់ទន្លេបាសាក់ ខណ្ឌចំការមន រាជធានីភ្នំពេញ</p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer>
+  <footer data-i18n="footerText">
     គេហទំព័រប្រវត្តិរូបរបស់ <strong>អ្នកគ្រូ ហង់ ស៊ីថា (Ms. Hang Sitha)</strong> — គ្រូបង្រៀនកម្រិតបឋមសិក្សា
   </footer>
+
+  <script>
+    let currentLang = 'km';
+
+    const translations = {
+      en: {
+        docTitle: 'Ms. Hang Sitha (អ្នកគ្រូ ហង់ ស៊ីថា) — Primary School Teacher',
+        langBtn: 'ខ្មែរ',
+        pdfBtn: '🖨️ Print / PDF',
+        brand: 'Ms. Hang Sitha',
+        navAbout: 'Personal Info',
+        navExperience: 'Teaching Experience',
+        navEducation: 'Education & Certificates',
+        navReferences: 'References & Contact',
+        heroBadge: 'Primary School Teacher • គ្រូបង្រៀនកម្រិតបឋមសិក្សា',
+        heroTitle: 'Ms. Hang Sitha',
+        heroSubEn: 'អ្នកគ្រូ ហង់ ស៊ីថា',
+        heroDesc: 'Primary school teacher with teaching experience in both public and private schools. Enjoys reading books, researching teaching methodologies, working in teams, and teaching students with dedication.',
+        heroBtnExp: 'View Teaching Experience',
+        heroBtnRef: 'Contact Information',
+        aboutTitle: 'Personal & Family Information',
+        aboutSub: 'Identity details, residence, and family status',
+        personalCardTitle: 'Personal Information',
+        lblFullName: 'Full Name',
+        valFullName: 'HANG SITHA (ហង់ ស៊ីថា)',
+        lblGenderDob: 'Gender / Date of Birth',
+        valGenderDob: 'Female / 01.01.1975',
+        lblPob: 'Place of Birth',
+        valPob: 'Snuol Village, Theay Commune, Ba Phnum District, Prey Veng Province',
+        lblAddress: 'Current Address',
+        valAddress: 'House #79S20, Village 7, Tonle Bassac Commune, Chamkar Mon District, Phnom Penh',
+        lblPhone: 'Phone Number',
+        familyCardTitle: 'Family Status & Interests',
+        lblMarital: 'Marital Status',
+        valMarital: 'Married',
+        lblSpouse: 'Spouse / Occupation',
+        valSpouse: 'Huor Kang (Born 05.06.1970) — Teacher',
+        lblChild1: '1st Child',
+        valChild1: 'Huokaing Thara (Born 05.11.1998, Gender: Male)',
+        lblChild2: '2nd Child',
+        valChild2: 'Huokaing Tharath (Born 19.05.2001, Company Employee)',
+        lblInterest: 'Interests',
+        valInterest: 'Enjoys reading books, researching teaching methodologies, teamwork, and teaching',
+        expTitle: 'Work & Teaching Experience',
+        expSub: 'Primary school teaching history across educational institutions',
+        exp1Tag: '2017 – 2024',
+        exp1Heading: 'Primary School Teacher — Sokha Panhna Private School',
+        exp1Role: 'Role: Primary School Teacher',
+        exp1Salary: 'Salary / Allowance: $400',
+        exp1Desc: 'Taught and guided primary school students with care and attentiveness.',
+        exp2Tag: '1993 – 2013',
+        exp2Heading: 'Primary School Teacher — Public School',
+        exp2Role: 'Role: Primary School Teacher',
+        exp2Org: 'Institution: Public School',
+        exp2Desc: 'Taught primary school students and participated in school academic activities.',
+        eduTitle: 'Education, Training & Certificates',
+        eduSub: 'Diplomas, pedagogical certificates, and training courses',
+        genEduHeading: 'General Education',
+        genEdu1: '<strong>Upper Secondary School (2006 – 2008):</strong> Continuing education at secondary school (Exam session August 04, 2008, T. Hun Sen Bun Rany Wat Phnom Center, Grade E).',
+        genEdu2: '<strong>Lower Secondary School (1994 – 1998):</strong> Wat Koh School (Phnom Penh).',
+        genEdu3: '<strong>Primary School (1982 – 1989):</strong> Wat Preah Srei Tarapich School, Prey Veng Province.',
+        pedEduHeading: 'Pedagogy & Training Courses',
+        pedEdu1: '<strong>Primary School Teacher Certificate (11+2):</strong> Municipal Department of Teacher Training & Pedagogical Refresher (Study Confirmation dated August 12, 2001).',
+        pedEdu2: '<strong>Teacher Training Completion Certificate (#293470):</strong> Issued July 04, 2001.',
+        pedEdu3: '<strong>Teacher Training Certificate (1991 – 1993):</strong> Teacher Training & Pedagogical Refresher Center, Phnom Penh.',
+        pedEdu4: '<strong>Cambodian Institute of Human Rights (1996):</strong> Training Session on Human Rights Teaching Methodology for Primary Schools (29 July – 03 August 1996) and Study Certificate.',
+        pedEdu5: '<strong>Civic Documentation (2001):</strong> Course Completion Certificate.',
+        refTitle: 'References & Contact',
+        refSub: 'References who can verify qualifications and experience',
+        ref1Name: 'Mrs. Hok Leakhena',
+        ref1Org: 'Faculty of Buddhist Studies and Science',
+        ref1Role: '<strong>Occupation:</strong> Full-time Lecturer',
+        ref1Phone: '<strong>Phone:</strong> 012 904 371',
+        ref2Name: 'Mrs. Yon Danit',
+        ref2Org: 'Sokha Panhna Private School',
+        ref2Role: '<strong>Occupation:</strong> Primary School Teacher',
+        ref2Phone: '<strong>Phone:</strong> 092 267 10 24',
+        contactCardTitle: 'Direct Contact',
+        contactName: '<strong>Name:</strong> Hang Sitha (ហង់ ស៊ីថា)',
+        contactPhone: '<strong>Phone:</strong> 097 21 99 373',
+        contactAddr: '<strong>Address:</strong> House #79S20, Village 7, Tonle Bassac Commune, Chamkar Mon District, Phnom Penh',
+        footerText: 'Profile website of <strong>Ms. Hang Sitha (អ្នកគ្រូ ហង់ ស៊ីថា)</strong> — Primary School Teacher'
+      }
+    };
+
+    const kmOriginals = {};
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        kmOriginals[key] = el.innerHTML;
+      });
+    });
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'km' ? 'en' : 'km';
+      document.documentElement.lang = currentLang;
+
+      const langBtn = document.getElementById('langToggleBtn');
+      const pdfBtn = document.getElementById('pdfToggleBtn');
+
+      if (currentLang === 'en') {
+        document.title = translations.en.docTitle;
+        langBtn.textContent = translations.en.langBtn;
+        pdfBtn.textContent = translations.en.pdfBtn;
+
+        document.querySelectorAll('[data-i18n]').forEach((el) => {
+          const key = el.getAttribute('data-i18n');
+          if (translations.en[key] !== undefined) {
+            el.innerHTML = translations.en[key];
+          }
+        });
+      } else {
+        document.title = 'អ្នកគ្រូ ហង់ ស៊ីថា (Ms. Hang Sitha) — គ្រូបង្រៀនកម្រិតបឋមសិក្សា';
+        langBtn.textContent = '🌐 English';
+        pdfBtn.textContent = '🖨️ Print / PDF';
+
+        document.querySelectorAll('[data-i18n]').forEach((el) => {
+          const key = el.getAttribute('data-i18n');
+          if (kmOriginals[key] !== undefined) {
+            el.innerHTML = kmOriginals[key];
+          }
+        });
+      }
+    }
+  </script>
 
 </body>
 </html>
